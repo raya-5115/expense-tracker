@@ -1,4 +1,3 @@
-import ExpenseForm from "./components/ExpenseForm";
 import ExpenseTable from "./components/ExpenseTable";
 
 export default function HomePage() {
@@ -7,7 +6,7 @@ export default function HomePage() {
       <h1 className="text-2xl font-bold mb-6">💸 Expense Tracker</h1>
 
       <ExpenseTable />
-      
+
     </main>
   );
 }
