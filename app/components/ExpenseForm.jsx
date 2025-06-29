@@ -15,6 +15,7 @@ export default function ExpenseForm() {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const fetchExpenses = async () => {
     const res = await fetch("/api/expenses");
@@ -49,53 +50,90 @@ export default function ExpenseForm() {
     setAmount({});
     setCategory("");
     setDate("");
+    setShowForm(false); // Tutup modal setelah submit
     fetchExpenses();
   };
 
   return (
     <div>
-      <h1>Pengeluaran</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Abis beli apa nih??"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <NumericFormat
-          thousandSeparator="."
-          decimalSeparator=","
-          prefix="Rp "
-          allowNegative={false}
-          className="border p-2 rounded"
-          placeholder="Rp 100.000"
-          value={amount.formattedValue || ""}
-          onValueChange={(values) => {
-            const { floatValue } = values;
-            console.log("Nominal yang dipilih:", floatValue);
-            setAmount(values);
-          }}
-        />
-        <Select value={category} onValueChange={(value) => setCategory(value)}>
-          <SelectTrigger>
-            <SelectValue placeholder="Pilih kategori" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="makanan">Makanan</SelectItem>
-            <SelectItem value="daily">Daily</SelectItem>
-            <SelectItem value="fashion">Fashion</SelectItem>
-            <SelectItem value="transport">Transport</SelectItem>
-            <SelectItem value="lainnya">Lainnya</SelectItem>
-          </SelectContent>
-        </Select>
-        <input
-          type="date"
-          placeholder="kapan belinya?"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <button>Tambahkan</button>
-      </form>
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mb-6"
+        onClick={() => setShowForm(!showForm)}
+      >
+        {showForm ? "Tutup" : "Tambah"}
+      </button>
+
+      {showForm && (
+        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4 shadow-xl">
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-xl font-bold">Tambah Pengeluaran</h1>
+              <button
+                onClick={() => setShowForm(false)}
+                className="text-gray-500 hover:text-gray-700 text-xl"
+              >
+                ×
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                placeholder="Abis beli apa nih??"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
+              <NumericFormat
+                thousandSeparator="."
+                decimalSeparator=","
+                prefix="Rp "
+                allowNegative={false}
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Rp 100.000"
+                value={amount.formattedValue || ""}
+                onValueChange={(values) => {
+                  const { floatValue } = values;
+                  console.log("Nominal yang dipilih:", floatValue);
+                  setAmount(values);
+                }}
+              />
+
+              <Select
+                value={category}
+                onValueChange={(value) => setCategory(value)}
+              >
+                <SelectTrigger className="w-full p-3 border border-gray-300 rounded-lg">
+                  <SelectValue placeholder="Pilih kategori" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="makanan">Makanan</SelectItem>
+                  <SelectItem value="daily">Daily</SelectItem>
+                  <SelectItem value="fashion">Fashion</SelectItem>
+                  <SelectItem value="transport">Transport</SelectItem>
+                  <SelectItem value="lainnya">Lainnya</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <input
+                type="date"
+                placeholder="kapan belinya?"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
+              <button
+                type="submit"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-medium transition-colors"
+              >
+                Tambahkan
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
