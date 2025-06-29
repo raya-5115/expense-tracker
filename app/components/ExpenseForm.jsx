@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CgAddR, CgCloseR  } from "react-icons/cg";
 
 export default function ExpenseForm() {
   const [expenses, setExpenses] = useState([]);
@@ -50,7 +51,7 @@ export default function ExpenseForm() {
     setAmount({});
     setCategory("");
     setDate("");
-    setShowForm(false); // Tutup modal setelah submit
+    setShowForm(false); 
     fetchExpenses();
   };
 
@@ -60,7 +61,7 @@ export default function ExpenseForm() {
         className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md mb-6"
         onClick={() => setShowForm(!showForm)}
       >
-        {showForm ? "Tutup" : "Tambah"}
+        {showForm ? <CgCloseR /> : <CgAddR />}
       </button>
 
       {showForm && (
