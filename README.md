@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💸 Expense Tracker – CODEXPEDITION Project
 
-## Getting Started
+Aplikasi pencatat pengeluaran pribadi berbasis **Next.js 14** dan **Supabase** yang membantu kamu memantau keuangan harian dengan fitur input data, filter, dan visualisasi dalam grafik.
 
-First, run the development server:
+🚀 Dibuat dalam rangka belajar fullstack development selama libur semester (**Proyek CODEXPEDITION**)
 
+---
+
+## ✨ Fitur
+- Tambah pengeluaran (judul, jumlah, kategori, tanggal)
+- Lihat daftar pengeluaran dalam tabel
+- Hapus data pengeluaran
+- Filter berdasarkan bulan atau kategori (coming soon)
+- Visualisasi data pengeluaran (Pie / Bar Chart – coming soon)
+- UI responsive dan mobile friendly
+
+---
+
+## 🛠️ Teknologi
+- **Next.js 14 (App Router)**
+- **Supabase** – database & API
+- **Tailwind CSS** – styling
+- **Recharts** atau Chart.js – visualisasi (opsional)
+- **React Hook Form** – validasi form (opsional)
+
+---
+
+## 📦 Setup Lokal
+
+### 1. Clone Repo & Install
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/username/expense-tracker.git
+cd expense-tracker
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Buat .env.local
+Isi dengan data dari Supabase:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=xxxxxx
+```
+### 3. Jalankan Lokal
+```bash
+npm run dev
+```
+Akses di: http://localhost:3000
