@@ -17,11 +17,9 @@ Aplikasi pencatat pengeluaran pribadi berbasis **Next.js 14** dan **Supabase** y
 ---
 
 ## 🛠️ Teknologi
-- **Next.js 14 (App Router)**
+- **Next.js 15 (App Router)**
 - **Supabase** – database & API
 - **Tailwind CSS** – styling
-- **Recharts** atau Chart.js – visualisasi (opsional)
-- **React Hook Form** – validasi form (opsional)
 
 ---
 
