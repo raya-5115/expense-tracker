@@ -14,7 +14,7 @@ export async function POST(req) {
   const body = await req.json();
   const { title, amount, category, date } = body;
 
-  if (!amount) {
+  if (!amount || amount <= 0) {
     return Response.json({ error: "masukan jumlah uang" }, { status: 400 });
   }
 
