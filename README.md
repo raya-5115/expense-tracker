@@ -1,6 +1,6 @@
 # 💸 Expense Tracker – CODEXPEDITION Project
 
-Aplikasi pencatat pengeluaran pribadi berbasis **Next.js 14** dan **Supabase** yang membantu kamu memantau keuangan harian dengan fitur input data, filter, dan visualisasi dalam grafik.
+Aplikasi pencatat pengeluaran pribadi berbasis **Next.js 15** dan **Supabase** yang membantu kamu memantau keuangan harian dengan fitur input data, filter, dan visualisasi dalam grafik.
 
 🚀 Dibuat dalam rangka belajar fullstack development selama libur semester (**Proyek CODEXPEDITION**)
 
