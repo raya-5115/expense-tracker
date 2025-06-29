@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CgAddR, CgCloseR  } from "react-icons/cg";
+import { CgAddR, CgCloseR, CgClose   } from "react-icons/cg";
 
 export default function ExpenseForm() {
   const [expenses, setExpenses] = useState([]);
@@ -73,7 +73,7 @@ export default function ExpenseForm() {
                 onClick={() => setShowForm(false)}
                 className="text-gray-500 hover:text-gray-700 text-xl"
               >
-                ×
+                <CgClose />
               </button>
             </div>
 
@@ -92,7 +92,7 @@ export default function ExpenseForm() {
                 prefix="Rp "
                 allowNegative={false}
                 className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Rp 100.000"
+                placeholder="Spill dong berapa"
                 value={amount.formattedValue || ""}
                 onValueChange={(values) => {
                   const { floatValue } = values;
