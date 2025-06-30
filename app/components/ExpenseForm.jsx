@@ -8,9 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CgAddR, CgCloseR, CgClose   } from "react-icons/cg";
+import { CgAddR, CgCloseR, CgClose } from "react-icons/cg";
 
-export default function ExpenseForm() {
+export default function ExpenseForm({ onExpenseAdded }) {
   const [expenses, setExpenses] = useState([]);
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
@@ -37,7 +37,7 @@ export default function ExpenseForm() {
       return;
     }
 
-    await fetch("/api/expenses", {
+    const response = await fetch("/api/expenses", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -47,12 +47,20 @@ export default function ExpenseForm() {
         date,
       }),
     });
-    setTitle("");
-    setAmount({});
-    setCategory("");
-    setDate("");
-    setShowForm(false); 
-    fetchExpenses();
+
+    if (response.ok) {
+      setTitle("");
+      setAmount({});
+      setCategory("");
+      setDate("");
+      setShowForm(false);
+      fetchExpenses();
+
+      // Panggil callback untuk refresh data di parent component
+      if (onExpenseAdded) {
+        onExpenseAdded();
+      }
+    }
   };
 
   return (
